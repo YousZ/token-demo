@@ -27,7 +27,7 @@ export default {
     onCreate() {
       var Wallet = require('ethereumjs-wallet')
 
-      生成50个钱包地址数量
+      // 生成50个钱包地址数量;
       for (var i = 0; i < this.form.num; i++) {
         const val = this.form.value
         const EthWallet = Wallet.default.generate(false)
