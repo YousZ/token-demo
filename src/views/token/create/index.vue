@@ -9,12 +9,7 @@
       </el-form-item>
     </el-form>
     <el-link type="primary"><h3>格式:地址---私钥</h3></el-link>
-    <el-input
-      v-model="form.value"
-      v-loading="loading"
-      type="textarea"
-      rows="30"
-    />
+    <el-input v-model="form.value" type="textarea" rows="30" />
   </div>
 </template>
 
@@ -23,29 +18,26 @@ export default {
   data() {
     return {
       form: {
-        num: "",
-        value: "",
-      },
-      loading: "",
-    };
+        num: '',
+        value: ''
+      }
+    }
   },
   methods: {
     onCreate() {
-      var Wallet = require("ethereumjs-wallet");
-      this.loading = true;
+      var Wallet = require('ethereumjs-wallet')
 
-      // 生成50个钱包地址数量
+      生成50个钱包地址数量
       for (var i = 0; i < this.form.num; i++) {
-        const val = this.form.value;
-        const EthWallet = Wallet.default.generate(false);
-        const address = EthWallet.getAddressString();
-        const privateKey = EthWallet.getPrivateKeyString();
-        this.form.value = val + address + "---" + privateKey + "\n";
+        const val = this.form.value
+        const EthWallet = Wallet.default.generate(false)
+        const address = EthWallet.getAddressString()
+        const privateKey = EthWallet.getPrivateKeyString()
+        this.form.value = val + address + '---' + privateKey + '\n'
       }
-      this.loading = false;
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
