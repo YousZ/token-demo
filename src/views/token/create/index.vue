@@ -8,7 +8,7 @@
         <el-button type="primary" @click="onCreate">Create</el-button>
       </el-form-item>
     </el-form>
-    <el-link type="primary"><h3>格式:地址---私钥</h3></el-link>
+    <el-link type="primary"><h3>格式:私钥---地址</h3></el-link>
     <el-input v-model="form.value" type="textarea" rows="30" />
   </div>
 </template>
@@ -26,14 +26,13 @@ export default {
   methods: {
     onCreate() {
       var Wallet = require('ethereumjs-wallet')
-
       // 生成50个钱包地址数量;
       for (var i = 0; i < this.form.num; i++) {
         const val = this.form.value
         const EthWallet = Wallet.default.generate(false)
         const address = EthWallet.getAddressString()
         const privateKey = EthWallet.getPrivateKeyString()
-        this.form.value = val + address + '---' + privateKey + '\n'
+        this.form.value = val + privateKey + '---' + address + '\n'
       }
     }
   }
